@@ -1,0 +1,17 @@
+type: Microsoft.Web/containerApps
+template:
+  containers:
+  - name: wd-sample-mvc
+    image: whiteduck/sample-mvc:latest
+    env:
+    - name: Title
+      value: hello world
+  scale:
+    maxReplicas: 4
+    minReplicas: 2
+kubeEnvironmentId: /subscriptions/<subscription_id>/resourceGroups/<rg_name>/providers/Microsoft.Web/kubeEnvironments/<containerappenv_name>
+configuration:
+  activeRevisionsMode: Multiple
+  ingress:
+    external: true
+    targetPort: 80
